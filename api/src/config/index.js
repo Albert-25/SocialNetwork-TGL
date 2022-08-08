@@ -1,8 +1,10 @@
 const path = require("path");
-require('dotenv').config({ path: path.join(__dirname, "../../.env") });
 
+if (process.env.NODE_ENV != 'production') {
+    require('dotenv').config({ path: path.join(__dirname, "../../.env") });
+}
 const config = {
-    env: process.env.NODE_ENV || "dev",
+    // env: process.env.NODE_ENV || "dev",
     DB_USER: process.env.DB_USER,
     DB_PASSWORD: process.env.DB_PASSWORD,
     DB_HOST: process.env.DB_HOST,
