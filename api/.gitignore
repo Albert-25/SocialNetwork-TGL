@@ -4,7 +4,7 @@
 ### Linux ###
 *~
 # ignorar carpeta que recibe las imagenes subidas a ciertas rutas post
-src/multer/uploads
+
 # temporary files which can be created if a process still has a handle open of a deleted file
 .fuse_hidden*
 
