@@ -1,5 +1,5 @@
-import dotenv from "dotenv"
-dotenv.config("../../.env");
+// import dotenv from "dotenv"
+// dotenv.config("../../.env");
 export const getEnvVariables = () => {
   // import.meta.env
 
