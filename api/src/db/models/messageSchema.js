@@ -1,35 +1,31 @@
 const { Model, DataTypes } = require("sequelize");
 
-const CommentSchema = {
+const MessageModel = {
     id: {
         allowNull: true,
         autoIncrement: true, // 
         primaryKey: true,   // 
         type: DataTypes.INTEGER
     },
-    date: {
-        allowNull: true,
-        type: DataTypes.STRING
-    },
-    comment: {
+    text: {
         allowNull: true,
         type: DataTypes.STRING
     },
 }
 
-class Comment extends Model {
+class Message extends Model {
     static associate() { }
 
     static config(sequelize) {
         return {
             sequelize,
-            tableName: 'comments',
-            modelName: 'Comment',
+            tableName: 'messages', 
+            modelName: 'Message', 
             timestamps: true
         }
     }
 }
 
-module.exports = {
-    CommentSchema, Comment
+module.exports = { 
+    MessageModel, Message
 }

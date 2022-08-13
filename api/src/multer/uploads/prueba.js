@@ -1,1 +1,0 @@
-//esta carpeta es solo para enviar a heroku la carpeta uploads "vacia"
