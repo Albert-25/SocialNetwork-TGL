@@ -56,7 +56,7 @@ const uploadPost = async (req, res) => {
         await usuarioLogeado.addPost(post);
         successResponse(req, res, post);
     } catch (error) {
-        console.log(error)
+        console.log("ERRRRRRRRRRO=>>>>>>>>>> PSOT",error)
         errorResponse(req, res, error);
     }
 }

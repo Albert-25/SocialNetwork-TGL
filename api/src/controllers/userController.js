@@ -109,6 +109,7 @@ const putProfilePhotoUser = async (req, res) => {
     );
     successResponse(req, res, urlPhotoProfile);
   } catch (error) {
+    console.log("ERRRRRRRRRRO=>>>>>>>>>> ",error)
     errorResponse(req, res, error);
   }
 };
