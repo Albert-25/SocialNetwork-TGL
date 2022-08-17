@@ -55,4 +55,4 @@ io.on("connection", (socket) => {
     })
 })
 
-module.exports = serverHttp;
+module.exports = app;
