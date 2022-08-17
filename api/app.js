@@ -6,6 +6,10 @@ const { Server } = require("socket.io")
 const router = require("./src/routes/index");
 const app = express()
 
+app.use(cors());
+app.use(express.json());
+app.use(router);
+
 const serverHttp = http.createServer(app)
 const io = new Server(serverHttp, {
     cors: {
@@ -51,8 +55,6 @@ io.on("connection", (socket) => {
     })
 })
 
-app.use(cors());
-app.use(express.json());
-app.use(router);
+
 
 module.exports = serverHttp;
