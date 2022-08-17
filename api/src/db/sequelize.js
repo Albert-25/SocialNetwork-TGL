@@ -46,7 +46,7 @@ Conversation.hasMany(Message);
 Message.belongsTo(Conversation);
 
 sequelize.sync({
-    force: true,
+    force: false,
     alter: true
 })
 
