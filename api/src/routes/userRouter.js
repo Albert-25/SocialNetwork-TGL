@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const upload = require("../multer/multerConfig");
 const { validarJWT } = require("../middleware/validar-jwt");
-const { validateCreate } = require("../validators/users")
+const { validateDataJoi } = require("../middleware/validateDataJoi");
+const { userSchema } = require("../utils/joiSchemas/usersJoiSchema");
 
 const {
     getAllUsers,
@@ -10,6 +11,7 @@ const {
     getUserById,
     postUser,
     putUserById,
+    putPhotoUserById,
     putProfilePhotoUser,
     deleteUserById,
     loginUser,
@@ -19,8 +21,9 @@ const {
 router.get("/all", getAllUsers);
 router.get("/byalias/:alias", getUserByAlias);
 router.get("/byid/:id", getUserById)
-router.post("/", validateCreate, postUser);
+router.post("/", postUser);
 router.put("/", putUserById);
+// router.put("/photouser", upload.single("file"), putPhotoUserById);
 router.put("/profilephoto", upload.single("file"), putProfilePhotoUser);
 router.delete("/:id", deleteUserById);
 router.post("/login", loginUser);
