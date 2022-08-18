@@ -187,13 +187,7 @@ export const Messenger = () => {
             })
         })
         return () => {
-            socket.current.off("getMessage", data => {
-                setArrivalMessage({
-                    UserId: data.senderId,
-                    text: data.text,
-                    createdAt: Date.now()
-                })
-            })
+            socket.current.disconnect()
         }
     }, [])
 
