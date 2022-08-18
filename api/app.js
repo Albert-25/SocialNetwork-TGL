@@ -9,7 +9,8 @@ const app = express()
 const serverHttp = http.createServer(app)
 const io = new Server(serverHttp, {
     cors: {
-        origin: "*"// url del frontend 
+        origin: "*",// url del frontend 
+        methods: ["GET", "POST"]
     }
 })
 
