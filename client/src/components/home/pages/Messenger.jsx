@@ -188,8 +188,10 @@ export const Messenger = () => {
                 text: data.text,
                 createdAt: Date.now()
             })
-            socket.current.disconnect();
         })
+        return () => {
+            socket.current.disconnect();
+        }
     }, [])
 
     useEffect(() => {
