@@ -98,6 +98,15 @@ export const Messenger = () => {
     }
     const handleSendMessage = async (e) => {
         e.preventDefault()
+
+        const receiverId = currentChatState.members.find(memberId => memberId != userId)
+
+        socket.current.emit("sendMessage", {
+            senderId: userId,
+            receiverId,
+            text: newMessage
+        })
+
         const messageToSave = {
             text: newMessage,
             userId: userId,
