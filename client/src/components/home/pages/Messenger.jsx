@@ -52,6 +52,9 @@ export const Messenger = () => {
         socket.current.on("getUsers", users => {
             console.log("usuarios: ", users)
         })
+        socket.current.on("connect_error", (err) => {
+            console.log(`connect_ERROR due to ${err.message}`);
+        });
     }, [user])
 
 
