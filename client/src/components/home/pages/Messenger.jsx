@@ -52,9 +52,6 @@ export const Messenger = () => {
         socket.current.on("getUsers", users => {
             console.log("usuarios: ", users)
         })
-        socket.current.on("connect_error", (err) => {
-            console.log(`connect_ERROR due to ${err.message}`);
-        });
     }, [user])
 
 
@@ -190,7 +187,13 @@ export const Messenger = () => {
             })
         })
         return () => {
-            socket.current.disconnect();
+            socket.current.off("getMessage", data => {
+                setArrivalMessage({
+                    UserId: data.senderId,
+                    text: data.text,
+                    createdAt: Date.now()
+                })
+            })
         }
     }, [])
 
