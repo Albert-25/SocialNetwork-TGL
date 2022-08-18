@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import { Tooltip, Button, Modal, Label } from 'flowbite-react'
 import { AdjustmentsIcon } from '@heroicons/react/outline'
 import { AiFillTool, AiOutlineCloudUpload } from 'react-icons/ai'
-import { FormProfile } from './FormProfile'
+
+import photoDefault from '../../../../../assets/photoDefault.png'
 import { useProfileStore } from '../../../../hooks/useProfileStore'
 import { useAuthStore } from '../../../../hooks'
-import { useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import photoDefault from '../../../../../assets/photoDefault.png'
-
+import { FormProfile } from './FormProfile'
 const imagePath = '/assets/model.avif'
 
 export const Header = () => {
@@ -36,7 +36,6 @@ export const Header = () => {
   const onHandleSubmit = async (e) => {
     e.preventDefault()
     loadingPhotoProfile(image.data, idUser)
-    // loadingDataProfile(idUser)
     setModalImg(false)
   }
 
@@ -48,7 +47,7 @@ export const Header = () => {
 
   return (
     <div>
-      <React.Fragment>
+      <>
         <Modal
           show={openModal}
           size="md"
@@ -60,8 +59,8 @@ export const Header = () => {
             <FormProfile close={setOpenModal} />
           </Modal.Body>
         </Modal>
-      </React.Fragment>
-      <React.Fragment>
+      </>
+      <>
         <Modal
           show={modalImg}
           size="md"
@@ -98,7 +97,7 @@ export const Header = () => {
             </div>
           </Modal.Body>
         </Modal>
-      </React.Fragment>
+      </>
 
       <div className="h-20 flex flex-row justify-around items-center bg-team-green ">
         <div className="flex flex-col mt-3">

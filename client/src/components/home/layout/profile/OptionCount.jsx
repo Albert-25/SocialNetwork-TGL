@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Modal } from 'flowbite-react'
+
 import { useProfileStore } from '../../../../hooks/useProfileStore'
 import { useAuthStore } from '../../../../hooks'
 
@@ -13,11 +14,9 @@ export const OptionCount = () => {
 
   const inactiveCountUser = () => {
     inactiveCount(idUser)
-    // onLogout
   }
   const deleteCountUser = (id) => {
     deleteCount(idUser)
-    // onLogout
   }
 
   useEffect(() => {
@@ -26,7 +25,7 @@ export const OptionCount = () => {
 
   return (
     <div>
-      <React.Fragment>
+      <>
         <Modal
           show={modalInactive}
           size="md"
@@ -72,9 +71,9 @@ export const OptionCount = () => {
             </div>
           </Modal.Body>
         </Modal>
-      </React.Fragment>
+      </>
 
-      <React.Fragment>
+      <>
         <Modal
           show={modalDelete}
           size="md"
@@ -120,7 +119,7 @@ export const OptionCount = () => {
             </div>
           </Modal.Body>
         </Modal>
-      </React.Fragment>
+      </>
 
       <div className="w-full flex flex-row justify-center">
         <button
@@ -130,7 +129,7 @@ export const OptionCount = () => {
           Inactivar
         </button>
         <button
-          className="h-10 w-28 text-white bg rounded-md hover:bg-team-blue"
+          className="h-10 w-28 text-white bg-pink-500 rounded-md hover:bg-team-blue"
           onClick={() => setModalDelete(true)}
         >
           Eliminar

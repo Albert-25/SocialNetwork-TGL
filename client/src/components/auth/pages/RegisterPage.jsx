@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
+
 import { AuthLayout } from '../layout/AuthLayout'
 import { useForm, useAuthStore } from '../../../hooks'
 
@@ -69,13 +70,12 @@ export const RegisterPage = () => {
 
   const handleClick = () => {
     navigate('LoginPage')
-    // history.push("/LoginPage");
   }
 
   return (
     <AuthLayout title="Registrarse">
       <form
-       className="flex flex-col p-8"
+       className="flex flex-col pr-10"
        onSubmit={onSubmit}
       >
 
@@ -89,7 +89,7 @@ export const RegisterPage = () => {
           value={alias}
           onChange={onInputChange}
         />
-        <span className='text-[10px] text-end text-team-brown'>{formSubmitted && aliasValid}</span>
+        <span className='text-[10px] text-end text-red-600'>{formSubmitted && aliasValid}</span>
 
         <label htmlFor="">Nombre completo</label>
         <input
@@ -101,7 +101,7 @@ export const RegisterPage = () => {
           value={name}
           onChange={onInputChange}
         />
-        <span className='text-[10px] text-end text-team-brown'>{formSubmitted && nameValid}</span>
+        <span className='text-[10px] text-end text-red-600'>{formSubmitted && nameValid}</span>
 
         <label htmlFor="">Correo electrónico</label>
         <input
@@ -113,7 +113,7 @@ export const RegisterPage = () => {
           value={email}
           onChange={onInputChange}
         />
-        <span className='text-[10px] text-end text-team-brown'>{formSubmitted && emailValid}</span>
+        <span className='text-[10px] text-end text-red-600'>{formSubmitted && emailValid}</span>
 
         <label htmlFor="">Celular</label>
         <input
@@ -125,41 +125,44 @@ export const RegisterPage = () => {
           value={phone}
           onChange={onInputChange}
         />
-        <span className='text-[10px] text-end text-team-brown'>{formSubmitted && phoneValid}</span>
+        <span className='text-[10px] text-end text-red-600'>{formSubmitted && phoneValid}</span>
 
         <label htmlFor="">Contraseña</label>
         <input
           className="form-input px-4 py-3 rounded-full"
-          type="text"
+          type="password"
           placeholder="password"
           id="password"
           name="password"
           value={password}
           onChange={onInputChange}
         />
-        <span className='text-[10px] text-end text-team-brown'>{formSubmitted && passwordValid}</span>
+        <span className='text-[10px] text-end text-red-600'>{formSubmitted && passwordValid}</span>
 
         <label htmlFor="">Confirmar contraseña</label>
         <input
           className="form-input px-4 py-3 rounded-full"
-          type="text"
+          type="password"
           placeholder="password"
           id="password1"
           name="password1"
           value={password1}
           onChange={onInputChange}
         />
-        <span className='text-[10px] text-end text-team-brown'>{formSubmitted && password1Valid}</span>
+        <span className='text-[10px] text-end text-red-600'>{formSubmitted && password1Valid}</span>
 
         <div className="flex flex-row-reverse justify-between mt-4">
-        <button type="button" onClick={handleClick} className="bg-team-brown h-10 w-1/2  ml-3 rounded-lg text-team-dark font-medium hover:bg-team-green">
-            Regresar
-          </button>
-          <button type='submit' className="bg-team-brown h-10 w-1/2  ml-3 rounded-lg text-team-dark font-medium hover:bg-team-green">
+          <button type='submit' className="bg-team-green h-10 w-full  ml-3 rounded-lg text-black  font-medium hover:bg-team-dark hover:text-white">
             Registrar
           </button>
         </div>
       </form>
+      <div className='flex flex-col items-end m-9'>
+        <p>¿Ya tienes cuenta?</p>
+        <button type="button" onClick={handleClick} className="  ml-0 rounded-lg text-team-dark  underline font-semibold m">
+              Login
+        </button>
+      </div>
     </AuthLayout>
   )
 }

@@ -1,5 +1,5 @@
 import { authSlice, clearErrorMessage, onLogin, onLogout } from '../../../src/store/auth/authSlice'
-import { authenticatedState, initialState, notauthenticatedState } from '../../fixtures/auth-states'
+import { authenticatedState, initialState } from '../../fixtures/auth-states'
 import { testUserCredentials } from '../../fixtures/testUser'
 
 describe('Test on authSlice', () => {
@@ -9,7 +9,6 @@ describe('Test on authSlice', () => {
 
   test('should must login', () => {
     const state = authSlice.reducer(initialState, onLogin(testUserCredentials))
-    // console.log(state)
     expect(state).toEqual({
       status: 'authenticated',
       user: testUserCredentials,
@@ -19,7 +18,6 @@ describe('Test on authSlice', () => {
 
   test('should must logout', () => {
     const state = authSlice.reducer(authenticatedState, onLogout())
-    // console.log(state)
     expect(state).toEqual({
       status: 'not-authenticated',
       user: {},

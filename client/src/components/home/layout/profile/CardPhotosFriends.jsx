@@ -1,15 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
 import { Card, Modal, Label, TextInput } from 'flowbite-react'
 import { AiOutlineCloudUpload } from 'react-icons/ai'
-import { Link } from 'react-router-dom'
 
 import { useAuthStore, useForm } from '../../../../hooks'
-import { useProfileStore } from '../../../../hooks/useProfileStore'
-import { useSelector } from 'react-redux'
-import photoDefault from '../../../../../assets/photoDefault.png'
-import { useFriendStore } from '../../../../hooks/useFriendStore'
-import Swal from 'sweetalert2'
 import { useHomeStore } from '../../../../hooks/useHomeStore'
+import { useProfileStore } from '../../../../hooks/useProfileStore'
+import { useFriendStore } from '../../../../hooks/useFriendStore'
+import photoDefault from '../../../../../assets/photoDefault.png'
 
 const formData = {
   comment: ''
@@ -47,17 +47,17 @@ export const CardPhotosFriends = () => {
 
   const handleDeleteFriend = (friendId) => {
     Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: '¿Estas seguro de eliminar este amigo?',
+      text: 'Esta acción no se puede revertir!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Sí, eliminarlo!'
     }).then((result) => {
       if (result.isConfirmed) {
         deleteFriendHook(friendId)
-        Swal.fire('Deleted!', 'Your file has been deleted.', 'success')
+        Swal.fire('Eliminado!', 'Amigo eliminado.', 'success')
       }
     })
   }
@@ -84,13 +84,12 @@ export const CardPhotosFriends = () => {
   }
 
   useEffect(() => {
-    console.log('friends', friends)
     setIdUser(user.id)
   }, [])
 
   return (
     <div className="flex gap-4 mt-3 mb-3 justify-center flex-wrap ">
-      <React.Fragment>
+      <>
         <Modal
           show={openModal}
           size="md"
@@ -125,8 +124,8 @@ export const CardPhotosFriends = () => {
             </form>
           </Modal.Body>
         </Modal>
-      </React.Fragment>
-      <React.Fragment>
+      </>
+      <>
         <Modal
           show={openModalImg}
           size="md"
@@ -158,16 +157,7 @@ export const CardPhotosFriends = () => {
             </form>
           </Modal.Body>
         </Modal>
-      </React.Fragment>
-
-      {/* <div className='min-w-full'>
-      <button
-        type='submit'
-        onClick={() => setOpenModalImg(true)}
-        className='w-1/2 relative -top-2 bg-team-brown p-3 rounded-lg m-3 text-white hover:bg-team-dark hover:text-white'>
-          Agregar fotos
-      </button>
-   </div> */}
+      </>
 
       {friends.length === 0
         ? (
@@ -184,19 +174,19 @@ export const CardPhotosFriends = () => {
             friends.map((friend) => {
               return (
             <Card key={friend.id}>
-              <div className="flex flex-col items-center pb-10">
+              <div className="flex flex-col items-center justify-center pb-10 ">
                 <Link
                   to={`/profile/${friend.alias}`}
                   onClick={() => handleLastUserVisited(friend.alias, friend.id)}
                 >
                   <img
-                    className="mb-3 h-24 w-24 rounded-full shadow-lg"
+                    className="bg flex mb-3 h-24 w-24 justify-center mx-auto rounded-full shadow-lg"
                     src={
                       friend.photoProfile ? friend.photoProfile : photoDefault
                     }
                     alt="Bonnie image"
                   />
-                  <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+                  <h5 className="mb-1 text-xl text-center font-medium text-gray-900 dark:text-white">
                     {friend.alias}
                   </h5>
                   <span className="text-sm text-gray-500 dark:text-gray-400">

@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
+
 import { HomeLayout } from '../layout/HomeLayout'
 import { Header } from '../layout/profile/Header'
 import { FormOtherUser } from '../layout/profile/FormOtherUser'
 import { CardPhotosFriends } from '../layout/profile/CardPhotosFriends'
-
-import { useLocation } from 'react-router-dom'
 import { useHomeStore } from '../../../hooks/useHomeStore'
 import { useFriendStore } from '../../../hooks/useFriendStore'
 
@@ -19,11 +19,11 @@ export const Friends = () => {
 
   useEffect(() => {
     sendPathHook(location.pathname)
-  }, [])
+  }, [location])
 
   return (
-    <HomeLayout >
-      <div  className='min-h-screen'>
+    <HomeLayout>
+      <div className="min-h-screen">
         <Header>
           <FormOtherUser />
         </Header>
