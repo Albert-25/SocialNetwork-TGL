@@ -10,12 +10,12 @@ import Message from '../layout/card/Message'
 import { useRef } from 'react'
 import FriendsToChatSearchResults from '../layout/FriendsToChatSearchResults'
 
-import io from "socket.io-client"
+import { io } from "socket.io-client"
+const socket = io("https://socialnetworktgl.herokuapp.com")
 
 export const Messenger = () => {
 
 
-    const socket = useRef(io.connect("https://socialnetworktgl.herokuapp.com"))
     const location = useLocation()
     const { user } = useSelector(state => state.auth)
     const userId = user.id
@@ -43,13 +43,10 @@ export const Messenger = () => {
         sendPathHook(location.pathname)
     }, [location])
 
-    useEffect(() => {
-        socket.current = io.connect("https://socialnetworktgl.herokuapp.com")
-    }, [])
 
     useEffect(() => {
-        socket.current.emit("addUser", userId)
-        socket.current.on("getUsers", users => {
+        socket.emit("addUser", userId)
+        socket.on("getUsers", users => {
             console.log("usuarios: ", users)
         })
     }, [user])
@@ -98,7 +95,7 @@ export const Messenger = () => {
 
         const receiverId = currentChatState.members.find(memberId => memberId != userId)
 
-        socket.current.emit("sendMessage", {
+        socket.emit("sendMessage", {
             senderId: userId,
             receiverId,
             text: newMessage
@@ -118,7 +115,7 @@ export const Messenger = () => {
 
             const receiverId = currentChatState.members.find(memberId => memberId != userId)
 
-            socket.current.emit("sendMessage", {
+            socket.emit("sendMessage", {
                 senderId: userId,
                 receiverId,
                 text: newMessage
@@ -179,16 +176,13 @@ export const Messenger = () => {
     }
 
     useEffect(() => {
-        socket.current.on("getMessage", data => {
+        socket.on("getMessage", data => {
             setArrivalMessage({
                 UserId: data.senderId,
                 text: data.text,
                 createdAt: Date.now()
             })
         })
-        return () => {
-            socket.current.disconnect()
-        }
     }, [])
 
     useEffect(() => {
