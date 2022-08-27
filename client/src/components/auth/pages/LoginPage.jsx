@@ -39,7 +39,7 @@ export const LoginPage = () => {
   return (
     <AuthLayout title="Login">
       <form onSubmit={onSubmit} className="flex flex-col p-8" aria-label='form'>
-        <label htmlFor="">Correo electrónico</label>
+        <label htmlFor="">Alias</label>
         <input
           className="form-input px-4 py-3 rounded-full"
           type="text"
