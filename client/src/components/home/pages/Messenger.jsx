@@ -11,7 +11,7 @@ import { useRef } from 'react'
 import FriendsToChatSearchResults from '../layout/FriendsToChatSearchResults'
 
 import { io } from "socket.io-client"
-const socket = io("https://socialnetworktgl.herokuapp.com")
+const socket = io("https://api-socialnetwork-tgl.up.railway.app")
 
 export const Messenger = () => {
 
