@@ -1,0 +1,236 @@
+swagger: "2.0"
+info:
+  title: Welcome to The Social Network TGL API
+  description: Social Network - tgl API
+  version: 1.0.0
+  contact:
+    name: Alberto Smith
+    email: ajst_95@outlook.com
+    url: https://www.linkedin.com/in/albertosmith-developer/
+  liscense:
+    name: Apache 2.0
+    url: "http://apache.org/"
+  servers:
+    # -url: "http://localhost:3000/"
+    # description: This is my local server
+    -url : "https://api-socialnetwork-tgl.up.railway.app/"
+    description: This is my the deployed server
+  externalDocs:
+    description: This is the Client link
+    url: https://social-network-tgl.vercel.app/auth/login
+
+# schemes: [http, https]
+
+
+
+paths:
+  # get requests
+  
+  /user/all:
+    get:
+      summary: Get all users
+      description: It Shows all users
+      tags: [Users]
+      responses:
+        200:
+          description: Success
+          schema:
+            type: object
+            properties:
+              alias:
+                type: string
+                description: user alias
+              name:
+                type: string
+                description: user name
+              email:
+                type: string
+                description: user email
+              phone:
+                type: number
+                description: user phone
+              password:
+                type: string
+                description: user password
+            example:
+              id: 2,
+              alias: alias123
+              name: Jhon
+              bio: nueva bio
+              status: true,
+              email: email nuevo
+              phone: 345454
+              password: $2a$14$6tZGnl3hedrGsTusB3H4hOcgkxaLzyWIlGN4BVucALPdoAMqwv0NS
+              photoProfile: https://i.ibb.co/7CfHmMQ/142320.png
+              photoCover: null
+              friends: [1]
+              favorites: []
+
+        500:
+          description: Internal Server Error
+
+  /user/byalias/{alias}:
+    get:
+      summary: Get a user by his alias
+      description: It Shows the user with indicated alias
+      tags: [Users]
+      parameters:
+        - name: alias
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          schema:
+            type: object
+            properties:
+              alias:
+                type: string
+                description: user alias
+              name:
+                type: string
+                description: user name
+              email:
+                type: string
+                description: user email
+              phone:
+                type: number
+                description: user phone
+              password:
+                type: string
+                description: user password
+            example:
+              id: 2,
+              alias: alias123
+              name: Jhon
+              bio: nueva bio
+              status: true,
+              email: email nuevo
+              phone: 345454
+              password: $2a$14$6tZGnl3hedrGsTusB3H4hOcgkxaLzyWIlGN4BVucALPdoAMqwv0NS
+              photoProfile: https://i.ibb.co/7CfHmMQ/142320.png
+              photoCover: null
+              friends: [1]
+              favorites: []
+
+        500:
+          description: Internal Server Error
+  
+  # post requests
+
+  /user:
+    post:
+      summary: Post a new user
+      tags: [Users]
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: user
+          schema:
+            type: object
+            properties:
+              alias:
+                type: string
+                required: true
+                description: user alias
+              name:
+                type: string
+                required: true
+                description: user name
+              email:
+                type: string
+                required: true
+                description: user email
+              phone:
+                type: number
+                description: user phone
+              password:
+                type: string
+                required: true
+                description: user password
+      responses:
+        200:
+          description: Success
+        500:
+          description: Internal Server Error
+
+  # put requests
+  
+  # /user/profilephoto:
+  #   put:
+  #     consumes:
+  #       - multipart/form-data
+  #     parameters:
+  #       - in: formData
+  #         name: file
+  #         type: file
+  #         required: true
+  #         description: Photo Upload
+  #       - in: path
+  #         name: id
+  #         type: integer
+  #         required: true
+  #         description: ID of integer       
+  #     responses:
+  #       200:
+  #         description: Success
+
+  # /user:
+  #   put:
+  #     summary: Put a user
+  #     consumes:
+  #       - application/json
+  #     parameters:
+  #       - in: body
+  #         name: user
+  #         schema:
+  #           type: object
+  #           properties:
+  #             alias:
+  #               type: string
+  #               required: true
+  #               description: user alias
+  #             name:
+  #               type: string
+  #               required: true
+  #               description: user name
+  #             email:
+  #               type: string
+  #               required: true
+  #               description: user email
+  #             phone:
+  #               type: number
+  #               description: user phone
+  #             password:
+  #               type: string
+  #               required: true
+  #               description: user password
+  #     responses:
+  #       200:
+  #         description: Success
+  #       500:
+  #         description: Internal Server Error
+  
+  # delete requests
+
+  /user/{id}:
+    delete:
+      summary: Delete a user
+      description: It deletes a user with its id
+      tags: [Users]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Success
+        500:
+          description: Internal Server Error
