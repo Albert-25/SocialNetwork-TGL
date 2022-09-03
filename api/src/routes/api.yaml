@@ -1,7 +1,7 @@
 swagger: "2.0"
 info:
   title: Welcome to The Social Network TGL API
-  description: Social Network - tgl API. "We are working to improve it, sorry for the inconvenience"
+  description: Social Network - tgl API. "we are working to have the documentation of all endpoints ready, sorry for the inconvenience"
   version: 1.0.0
   contact:
     name: Alberto Smith
