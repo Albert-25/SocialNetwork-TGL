@@ -38,10 +38,12 @@ export const useAuthStore = () => {
   const startRegister = async ({ alias, name, email, phone, password }) => {
     dispatch(onChecking())
     try {
+      console.log("holaaa")
       const { data } = await socialApi.post('/user', { alias, name, email, phone, password })
       localStorage.setItem('token', data.body.token)
       dispatch(onLogin({ id: data.body.user.id, alias: data.body.user.alias, name: data.body.user.name }))
     } catch (error) {
+      console.log("mal")
       dispatch(onLogout(error.response.data?.message || ''))
       setTimeout(() => {
         dispatch(clearErrorMessage())
