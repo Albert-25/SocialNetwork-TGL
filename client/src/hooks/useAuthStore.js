@@ -44,7 +44,7 @@ export const useAuthStore = () => {
       localStorage.setItem('token', data.body.token)
       dispatch(onLogin({ id: data.body.user.id, alias: data.body.user.alias, name: data.body.user.name }))
     } catch (error) {
-      console.log("mal", error)
+      console.log("mal=>>", error, "mal=>>")
       dispatch(onLogout(error.response.data?.message || ''))
       setTimeout(() => {
         dispatch(clearErrorMessage())
