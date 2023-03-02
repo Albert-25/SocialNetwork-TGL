@@ -4,6 +4,7 @@ exports.successResponse = function (req, res, body, status) {
 
 exports.errorResponse = function (req, res, error, status) {
     if(error.isBoom){
+        console.log("THIS IS THE ERROR: ", error)
         const { output } = error;
         res.status(output.statusCode || 500).json(output.payload);
     }
