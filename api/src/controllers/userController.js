@@ -41,6 +41,7 @@ const getUserById = async (req, res) => {
 
 const postUser = async (req, res) => {
   const { alias, name, email, phone, password } = req.body;
+  console.log("usuario creandose", { alias, name, email, phone, password })
   try {
     const photoProfile = "https://i.ibb.co/ccxtKKg/photo-Default.png"
     const user = await UserService.postUser({
