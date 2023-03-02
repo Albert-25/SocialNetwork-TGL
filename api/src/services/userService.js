@@ -57,11 +57,11 @@ class UserService {
             return user;
         } catch (error) {
             console.log("ERROR=>>>", error)
-            if(error.name =  'SequelizeUniqueConstraintError'){
-                throw boom.badRequest(`user with nickName ${newUser.alias} already is registered. Try other nickname.`);
-            }else{
-                throw boom.badRequest('Error in registering.')
-            }
+            // if(error.name =  'SequelizeUniqueConstraintError'){
+            //     throw boom.badRequest(`user with nickName ${newUser.alias} already is registered. Try other nickname.`);
+            // }else{
+            //     throw boom.badRequest('Error in registering.')
+            // }
         }
     }
 
