@@ -12,7 +12,7 @@ import FriendsToChatSearchResults from '../layout/FriendsToChatSearchResults'
 
 
 import { io } from "socket.io-client"
-const socket = io("https://api-socialnetwork-tgl.up.railway.app")
+const socket = io("https://socialnetwork-tgl-production.up.railway.app")
 
 export const Messenger = () => {
 
