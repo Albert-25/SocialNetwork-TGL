@@ -47,6 +47,7 @@ class UserService {
     }
 
     static async postUser(newUser) {
+        console.log("newUser", newUser)
         try {
             const encryptPassword = await bcrypt.hash(newUser.password, 14)
             const user = await User.create({
@@ -55,6 +56,7 @@ class UserService {
             });
             return user;
         } catch (error) {
+            console.log("ERROR=>>>", error)
             if(error.name =  'SequelizeUniqueConstraintError'){
                 throw boom.badRequest(`user with nickName ${newUser.alias} already is registered. Try other nickname.`);
             }else{

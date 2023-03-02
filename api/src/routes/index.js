@@ -58,6 +58,6 @@ router.use("/friends", friendsRouter)
 router.use("/favorites", favoritesRouter)
 router.use("/conversations", conversationsRouter)
 router.use("/messages", messagesRouter)
-// router.use("/", swaggerUI.serve, swaggerUI.setup(swaggerJsDocs))
+router.use("/", swaggerUI.serve, swaggerUI.setup(swaggerJsDocs))
 
 module.exports = router
