@@ -9,6 +9,7 @@ exports.errorResponse = function (req, res, error, status) {
         res.status(output.statusCode || 500).json(output.payload);
     }
     else{
+        console.log("THIS IS THE ERROR2: ", error)
         res.status(status || 500).json({ error })
     }
 }
