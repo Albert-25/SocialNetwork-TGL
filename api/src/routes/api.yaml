@@ -13,7 +13,7 @@ info:
   servers:
     # -url: "http://localhost:3000/"
     # description: This is my local server
-    -url : "https://api-socialnetwork-tgl.up.railway.app/"
+    -url : "https://socialnetwork-tgl-production.up.railway.app/"
     description: This is my the deployed server
   externalDocs:
     description: This is the Client link
