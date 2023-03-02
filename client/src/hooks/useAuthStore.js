@@ -38,7 +38,7 @@ export const useAuthStore = () => {
   const startRegister = async ({ alias, name, email, phone, password }) => {
     dispatch(onChecking())
     try {
-      console.log("holaaa")
+      console.log("holaaa", { alias, name, email, phone, password })
       const { data } = await socialApi.post('/user', { alias, name, email, phone, password })
       console.log("data", data)
       localStorage.setItem('token', data.body.token)
