@@ -31,7 +31,7 @@ Red Social TGL is a social network exclusively for students and employees of TEA
 
 #### This project was made by:
 
- - Natalia Cano: https://github.com/canonatalia
  - Albert Smith: https://github.com/Albert-25
  - Olmeiro Orozco: https://github.com/olmeiro
 ----------------------
+
